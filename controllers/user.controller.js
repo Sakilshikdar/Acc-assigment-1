@@ -26,7 +26,7 @@ module.exports.postAData = (req, res) => {
     const newId = data.length + 1;
 
     if (!gender || !name || !contact || !address || !photoUrl) {
-        res.status(404).send('Please Provide All data')
+        res.status(404).send('Please Provide All Data')
     }
 
     const newData = { id: newId, ...req.body }
@@ -42,11 +42,11 @@ module.exports.deleteAData = (req, res) => {
     const findForDelete = data.find(d => d.id === Number(id))
 
     if (!findForDelete) {
-        res.status(404).send("Id NOT found")
+        res.status(404).send("Id not found")
     } else {
         const filterItem = data.filter(d => d.id !== findForDelete.id)
         postAData(filterItem)
-        res.send('Delete Successfully')
+        res.send('Deleted Successfully')
     }
 
 }
@@ -57,7 +57,7 @@ module.exports.patchSingle = (req, res) => {
 
     const foundUser = data.find((user) => user.id === Number(id));
     if (!foundUser) {
-        return res.send(`user with id ${id} does not exist`);
+        return res.send(`user id ${id} does not exist`);
     }
 
     const updatedUsers = data.map((u) => {
@@ -78,7 +78,7 @@ module.exports.patchSingle = (req, res) => {
     });
 
     postAData(updatedUsers);
-    res.send(`user with id ${id} has been updated`);
+    res.send(`user id ${id} has been updated`);
 };
 
 module.exports.bulkUpdate = (req, res) => {
@@ -94,5 +94,5 @@ module.exports.bulkUpdate = (req, res) => {
     });
 
     utilFunction.saveUserData(updatedBulkUsers);
-    res.send(`Bulk Update successfull`);
+    res.send(`Bulk Updated successfull`);
 };
