@@ -10,4 +10,4 @@ router.delete('/delete/:id', deleteAData)
 router.patch('/update/:id', patchSingle)
 router.patch('/update/bulk-update', bulkUpdate)
 
-module.exports = router
+module.exports = router;
